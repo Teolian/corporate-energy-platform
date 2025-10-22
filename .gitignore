@@ -1,0 +1,61 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+dist-ssr
+*.local
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Testing
+coverage
+.nyc_output
+
+# Temp files
+*.tmp
+*.temp
+.cache
+
+# Old screenshots (keep only new ones)
+screenshots/04-dark-mode-*.png
+screenshots/01-home-full.png
+screenshots/01-home-hero.png
+screenshots/01-home-features.png
+screenshots/01-home-use-cases.png
+screenshots/01-home-mobile.png
+screenshots/02-companies-list.png
+screenshots/02-companies-filters-open.png
+screenshots/02-companies-search.png
+screenshots/03-company-detail-top.png
+screenshots/03-company-detail-charts.png
+
+# Playwright
+test-results/
+playwright-report/
+.playwright-mcp/

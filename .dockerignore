@@ -1,0 +1,14 @@
+node_modules
+dist
+.git
+.gitignore
+*.md
+.env
+.env.local
+.DS_Store
+screenshots
+demo
+coverage
+*.log
+.vscode
+.idea
