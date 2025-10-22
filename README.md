@@ -2,6 +2,8 @@
 
 > **Frontend Portfolio Project** - A modern Vue 3 application showcasing professional frontend development skills with energy industry domain knowledge.
 
+**Live Demo:** [https://corporate-energy-platform.vercel.app](https://corporate-energy-platform.vercel.app)
+
 **Status:** Frontend-only implementation with mocked data. Backend API is planned for future development.
 
 ## Overview
