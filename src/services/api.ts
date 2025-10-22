@@ -29,8 +29,8 @@ export const companyService = {
     // const response = await apiClient.get('/companies', { params })
     // return response.data
 
-    // Mock implementation
-    await new Promise((resolve) => setTimeout(resolve, 500))
+    // Mock implementation with reduced delay for smooth UX
+    await new Promise((resolve) => setTimeout(resolve, 150))
 
     let filtered = [...mockCompanies]
 
@@ -100,8 +100,8 @@ export const companyService = {
     // const response = await apiClient.get(`/companies/${id}`)
     // return response.data
 
-    // Mock implementation
-    await new Promise((resolve) => setTimeout(resolve, 300))
+    // Mock implementation with reduced delay
+    await new Promise((resolve) => setTimeout(resolve, 150))
 
     const company = mockCompanies.find((c) => c.id === id)
     if (!company) {
