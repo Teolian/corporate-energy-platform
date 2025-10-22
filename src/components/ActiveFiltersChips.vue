@@ -3,6 +3,8 @@ import { computed } from 'vue'
 import type { CompanyFilters } from '@/types/models'
 import { Search, X } from 'lucide-vue-next'
 import { FILTER_RANGES } from '@/constants/filters'
+import FilterChip from '@/components/common/FilterChip.vue'
+import BaseButton from '@/components/common/BaseButton.vue'
 
 interface Props {
   filters: CompanyFilters
@@ -63,71 +65,39 @@ const hasRenewableFilter = computed(
     <div class="h-4 w-px bg-gray-300 dark:bg-gray-600"></div>
 
     <!-- Search chip -->
-    <div
-      v-if="filters.search"
-      class="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium"
-    >
+    <FilterChip v-if="filters.search" @remove="emit('resetSearch')">
       <Search :size="16" />
       <span>{{ filters.search }}</span>
-      <button
-        @click="emit('resetSearch')"
-        class="hover:bg-primary-100 dark:hover:bg-primary-800/50 rounded-full p-0.5 transition-colors"
-      >
-        <X :size="16" />
-      </button>
-    </div>
+    </FilterChip>
 
     <!-- Industry chips -->
-    <div
+    <FilterChip
       v-for="industry in filters.industries"
       :key="industry"
-      class="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium"
+      @remove="emit('removeIndustry', industry)"
     >
-      <span>{{ industry }}</span>
-      <button
-        @click="emit('removeIndustry', industry)"
-        class="hover:bg-primary-100 dark:hover:bg-primary-800/50 rounded-full p-0.5 transition-colors"
-      >
-        <X :size="16" />
-      </button>
-    </div>
+      {{ industry }}
+    </FilterChip>
 
     <!-- Efficiency range chip -->
-    <div
-      v-if="hasEfficiencyFilter"
-      class="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium"
-    >
-      <span>Efficiency: {{ filters.efficiencyRange[0] }}-{{ filters.efficiencyRange[1] }}%</span>
-      <button
-        @click="emit('resetEfficiency')"
-        class="hover:bg-primary-100 dark:hover:bg-primary-800/50 rounded-full p-0.5 transition-colors"
-      >
-        <X :size="16" />
-      </button>
-    </div>
+    <FilterChip v-if="hasEfficiencyFilter" @remove="emit('resetEfficiency')">
+      Efficiency: {{ filters.efficiencyRange[0] }}-{{ filters.efficiencyRange[1] }}%
+    </FilterChip>
 
     <!-- Renewable range chip -->
-    <div
+    <FilterChip
       v-if="hasRenewableFilter"
-      class="inline-flex items-center gap-2 px-3 py-1.5 bg-energy-green/10 dark:bg-energy-green/20 text-energy-green dark:text-energy-green rounded-full text-sm font-medium"
+      variant="green"
+      @remove="emit('resetRenewable')"
     >
-      <span>Renewable: {{ filters.renewableRange[0] }}-{{ filters.renewableRange[1] }}%</span>
-      <button
-        @click="emit('resetRenewable')"
-        class="hover:bg-energy-green/20 dark:hover:bg-energy-green/30 rounded-full p-0.5 transition-colors"
-      >
-        <X :size="16" />
-      </button>
-    </div>
+      Renewable: {{ filters.renewableRange[0] }}-{{ filters.renewableRange[1] }}%
+    </FilterChip>
 
     <!-- Clear all button -->
-    <button
-      @click="emit('resetAll')"
-      class="inline-flex items-center gap-1.5 px-3 py-1.5 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 text-sm font-medium transition-colors"
-    >
+    <BaseButton variant="ghost" size="sm" @click="emit('resetAll')">
       <X :size="16" />
       <span>Clear All</span>
-    </button>
+    </BaseButton>
   </div>
 
   <!-- No filters active, just show total count -->

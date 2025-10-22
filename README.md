@@ -1,6 +1,6 @@
 # Corporate Energy Benchmark Platform
 
-> **Frontend Portfolio Project** - A modern Vue 3 application showcasing professional frontend development skills with energy industry domain knowledge.
+> A Vue 3 application for comparing corporate energy consumption and efficiency metrics.
 
 **Live Demo:** [https://corporate-energy-platform.vercel.app](https://corporate-energy-platform.vercel.app)
 
@@ -8,48 +8,44 @@
 
 ## Overview
 
-This is a comprehensive frontend application demonstrating expertise in Vue 3, TypeScript, and modern web development practices. The platform simulates an energy benchmarking system with real Fortune 500 company data, featuring advanced filtering, data visualization, and responsive design.
+This application simulates an energy benchmarking system using Fortune 500 company data. Built with Vue 3, TypeScript, and TailwindCSS.
 
-**What this project demonstrates:**
-- Production-ready Vue 3 code with Composition API
-- Full TypeScript coverage with strict mode
-- State management with Pinia
-- Advanced data tables with sorting and filtering
-- Interactive charts using Chart.js
-- Professional UI/UX with TailwindCSS
-- Dark mode implementation
-- Responsive design for all screen sizes
+**Tech stack:**
+- Vue 3.5 with Composition API
+- TypeScript (strict mode)
+- Pinia for state management
+- TanStack Table for data tables
+- Chart.js for visualizations
+- TailwindCSS for styling
+- Dark mode support
+- Responsive design
 
-**Note:** Currently uses mocked data from Fortune 500 sustainability reports. The backend API integration (Go + PostgreSQL) is planned for future development.
+**Note:** Currently uses mocked data. Backend API integration is planned for future development.
 
-### Key Features
+### Features
 
-- **Comprehensive Database** - Browse and search 50+ companies with real energy consumption data
-- **Advanced Filtering** - Filter by industry, efficiency score, renewable energy percentage
-- **AI-Powered Forecasting** - 12-month energy consumption predictions with 98% accuracy
-- **Industry Benchmarks** - Compare performance against industry averages and top performers
-- **Detailed Analytics** - Interactive charts showing consumption trends, forecasts, and comparisons
-- **Dark Mode Support** - Full dark theme implementation
+- Company database with 50+ Fortune 500 entries
+- Search and filter by industry, efficiency score, renewable percentage
+- 12-month energy consumption forecasts (mocked data)
+- Industry benchmark comparisons
+- Interactive charts for trends and analytics
+- Dark mode theme
 
 ## Screenshots
 
 ### Home Page
-Landing page with features overview and live preview of top performing companies.
 
 ![Home Page](./screenshots/01-home.png)
 
 ### Companies Database
-Searchable and filterable table with 50+ companies and key metrics.
 
 ![Companies Database](./screenshots/02-companies.png)
 
 ### Company Detail
-Detailed view with metrics, charts, and forecasting data.
 
 ![Company Detail](./screenshots/03-company-detail.png)
 
-### Dark Mode Support
-All pages feature a fully functional dark theme.
+### Dark Mode
 
 <table>
   <tr>
@@ -137,32 +133,10 @@ frontend/
 
 ## Pages
 
-### 1. Home Page (`/`)
-Landing page featuring:
-- Hero section with platform overview
-- Live preview of top 5 companies
-- Feature showcase (6 key features)
-- Use cases (4 target audiences)
-- Call-to-action sections
-
-### 2. Companies Database (`/companies`)
-Main data table page with:
-- Search functionality across company names, industries, and locations
-- Advanced filters (industry, efficiency range, renewable percentage)
-- Sortable columns
-- Pagination
-- Selection for comparison (up to 4 companies)
-
-### 3. Company Detail (`/companies/:id`)
-Individual company page showing:
-- Company overview and key metrics
-- Energy consumption statistics
-- 12-month consumption trend chart
-- Forecast accuracy visualization
-- Industry benchmark comparison
-
-### 4. Compare (`/compare`)
-Coming soon - Side-by-side company comparison
+- **`/`** - Home page with feature overview
+- **`/companies`** - Searchable table with filters and sorting
+- **`/companies/:id`** - Individual company details with charts
+- **`/compare`** - Coming soon
 
 ## Data Model
 
@@ -178,27 +152,10 @@ The application uses real data from Fortune 500 company sustainability reports. 
 
 ## Development
 
-### Code Style
-
-- **Vue Components**: Composition API with `<script setup>` syntax
-- **TypeScript**: Strict mode enabled, no implicit `any`
-- **Styling**: TailwindCSS utility classes
-- **State Management**: Pinia setup stores
-- **Naming**: PascalCase for components, camelCase for functions and variables
-
-### Type Safety
-
-All API responses and data models are fully typed. Type definitions are located in:
-- `src/types/models.ts` - Domain models (Company, Filters, etc.)
-- `src/types/api.ts` - API request/response types
-
-### Component Architecture
-
-Components follow a composable pattern:
-- Extract reusable logic into composables
-- Use TypeScript interfaces for props
-- Emit events with proper typing
-- Leverage VueUse for common patterns
+- Vue 3 Composition API with `<script setup>`
+- TypeScript strict mode
+- TailwindCSS for styling
+- Type definitions in `src/types/`
 
 ## Deployment
 
@@ -232,14 +189,12 @@ Create a `.env` file for configuration:
 VITE_API_URL=http://localhost:8080/api
 ```
 
-## Future Enhancements
+## Future Plans
 
-- Backend API integration (Go + PostgreSQL)
-- Real-time data updates via WebSocket
-- Advanced comparison features
-- Export functionality (PDF, CSV)
-- User authentication and saved dashboards
-- Custom alerts and notifications
+- Backend API (Go + PostgreSQL)
+- Company comparison features
+- Data export (PDF, CSV)
+- User authentication
 
 ## License
 

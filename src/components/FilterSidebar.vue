@@ -3,6 +3,8 @@ import { ref, computed } from 'vue'
 import type { CompanyFilters } from '@/types/models'
 import { X, Search } from 'lucide-vue-next'
 import { FILTER_RANGES } from '@/constants/filters'
+import BaseButton from '@/components/common/BaseButton.vue'
+import BaseInput from '@/components/common/BaseInput.vue'
 
 interface Props {
   filters: CompanyFilters
@@ -36,6 +38,16 @@ const localFilters = computed({
   set: (value) => emit('update:filters', value)
 })
 
+const searchQuery = computed({
+  get: () => props.filters.search,
+  set: (value: string | number) => {
+    emit('update:filters', {
+      ...localFilters.value,
+      search: String(value)
+    })
+  }
+})
+
 const toggleIndustry = (industry: string) => {
   const industries = [...localFilters.value.industries]
   const index = industries.indexOf(industry)
@@ -49,13 +61,6 @@ const toggleIndustry = (industry: string) => {
   emit('update:filters', {
     ...localFilters.value,
     industries
-  })
-}
-
-const updateSearch = (value: string) => {
-  emit('update:filters', {
-    ...localFilters.value,
-    search: value
   })
 }
 
@@ -97,12 +102,9 @@ const closeSidebar = () => {
       <!-- Header -->
       <div class="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4 flex items-center justify-between">
         <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Filters</h2>
-        <button
-          @click="closeSidebar"
-          class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-        >
+        <BaseButton variant="ghost" size="sm" @click="closeSidebar">
           <X :size="20" />
-        </button>
+        </BaseButton>
       </div>
 
       <!-- Filters Content -->
@@ -112,22 +114,12 @@ const closeSidebar = () => {
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             Search Company
           </label>
-          <div class="relative">
-            <input
-              type="text"
-              :value="localFilters.search"
-              @input="updateSearch(($event.target as HTMLInputElement).value)"
-              placeholder="Name, location, industry..."
-              class="w-full px-4 py-2.5 pl-10 border border-gray-300 dark:border-gray-600 rounded-lg
-                     bg-white dark:bg-gray-700 text-gray-900 dark:text-white
-                     focus:ring-2 focus:ring-primary-500 focus:border-transparent
-                     placeholder-gray-400 dark:placeholder-gray-500"
-            />
-            <Search
-              :size="20"
-              class="absolute left-3 top-3 text-gray-400"
-            />
-          </div>
+          <BaseInput
+            v-model="searchQuery"
+            type="search"
+            placeholder="Name, location, industry..."
+            :icon="Search"
+          />
         </div>
 
         <!-- Industries -->
@@ -136,19 +128,16 @@ const closeSidebar = () => {
             Industry ({{ localFilters.industries.length }})
           </label>
           <div class="flex flex-wrap gap-2">
-            <button
+            <BaseButton
               v-for="industry in industryOptions"
               :key="industry"
+              variant="chip"
+              size="sm"
+              :active="localFilters.industries.includes(industry)"
               @click="toggleIndustry(industry)"
-              :class="[
-                'px-3 py-1.5 rounded-full text-sm font-medium transition-all',
-                localFilters.industries.includes(industry)
-                  ? 'bg-primary-500 text-white shadow-sm'
-                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-              ]"
             >
               {{ industry }}
-            </button>
+            </BaseButton>
           </div>
         </div>
 
@@ -257,13 +246,13 @@ const closeSidebar = () => {
         </div>
 
         <!-- Reset Button -->
-        <button
+        <BaseButton
+          variant="secondary"
+          class="w-full"
           @click="emit('reset')"
-          class="w-full px-4 py-2.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300
-                 font-medium rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
         >
           Reset All Filters
-        </button>
+        </BaseButton>
       </div>
     </div>
   </Transition>
