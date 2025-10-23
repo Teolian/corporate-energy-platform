@@ -45,14 +45,22 @@ function getIndustryColor(industry: string): string {
 
 function getTagColor(tag: string): string {
   const colors: Record<string, string> = {
-    'ESG Leader': 'bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-400',
-    'Carbon Neutral': 'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400',
-    'Net Zero 2030': 'bg-teal-100 dark:bg-teal-900/20 text-teal-700 dark:text-teal-400',
-    'LEED Certified': 'bg-lime-100 dark:bg-lime-900/20 text-lime-700 dark:text-lime-400',
-    'ISO 50001': 'bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400',
-    'Energy Star': 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400'
+    'Tech': 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300',
+    'Cloud': 'bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300',
+    'BtoB': 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300',
+    'BtoC': 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300',
+    'Auto': 'bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300',
+    'Hardware': 'bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300',
+    'Manufacturing': 'bg-stone-100 dark:bg-stone-700/50 text-stone-700 dark:text-stone-300',
+    'Energy': 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300',
+    'Renewable': 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300',
+    'Finance': 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300',
+    'Healthcare': 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300',
+    'Retail': 'bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300',
+    'Aerospace': 'bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300',
+    'Transportation': 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'
   }
-  return colors[tag] || 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+  return colors[tag] || 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
 }
 </script>
 
@@ -100,7 +108,7 @@ function getTagColor(tag: string): string {
         </div>
         <div class="flex flex-wrap gap-1">
           <span
-            v-for="tag in company.tags"
+            v-for="tag in company.tags.filter(t => t !== company.industry)"
             :key="tag"
             :class="getTagColor(tag)"
             class="inline-block px-2 py-0.5 text-xs rounded"
