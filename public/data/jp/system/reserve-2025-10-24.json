@@ -1,0 +1,19 @@
+{
+  "date": "2025-10-24",
+  "areas": [
+    {
+      "area": "tokyo",
+      "reserve_margin_pct": 5.1,
+      "status": "watch"
+    },
+    {
+      "area": "kansai",
+      "reserve_margin_pct": 8.9,
+      "status": "stable"
+    }
+  ],
+  "source": {
+    "name": "OCCTO",
+    "url": "https://www.occto.or.jp/"
+  }
+}
