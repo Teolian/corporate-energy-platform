@@ -32,7 +32,14 @@
       "Bash(find:*)",
       "Bash(git reset:*)",
       "Bash(git log:*)",
-      "Bash(go version:*)"
+      "Bash(go version:*)",
+      "Bash(git checkout:*)",
+      "Bash(go mod init:*)",
+      "Bash(go mod tidy:*)",
+      "Bash(go test:*)",
+      "Bash(go run:*)",
+      "Bash(go work init:*)",
+      "Bash(cd /Users/teo/projeck/aversome/pipeline/jobs && go mod edit:*)"
     ],
     "deny": [],
     "ask": []
