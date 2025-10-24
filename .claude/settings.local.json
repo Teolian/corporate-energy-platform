@@ -39,7 +39,10 @@
       "Bash(go test:*)",
       "Bash(go run:*)",
       "Bash(go work init:*)",
-      "Bash(cd /Users/teo/projeck/aversome/pipeline/jobs && go mod edit:*)"
+      "Bash(cd /Users/teo/projeck/aversome/pipeline/jobs && go mod edit:*)",
+      "Bash(git merge:*)",
+      "Bash(npx tailwindcss init -p)",
+      "Bash(ln:*)"
     ],
     "deny": [],
     "ask": []
