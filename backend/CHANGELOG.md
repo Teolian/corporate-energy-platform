@@ -7,6 +7,61 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Phase 2 — Kansai Adapter & HTTP Fetching (2025-10-24)
+
+#### Added
+- **Kansai adapter** (`internal/adapters/kansai.go`)
+  - CSV parser for Kansai Electric Power Company
+  - Same structure as TEPCO adapter (consistency)
+  - Auto-header detection and unit conversion
+  - Source attribution to Kansai-TD website
+
+- **Kansai tests** (`internal/adapters/kansai_test.go`)
+  - Golden test with sample Kansai CSV
+  - Validation of 24-hour data points
+  - Unit conversion verification (万kW → MW)
+
+- **HTTP fetcher** (`pkg/http/fetcher.go`)
+  - Retry logic with exponential backoff
+  - Configurable max retries (default: 3)
+  - Backoff: 500ms → 1s → 2s → 4s (capped at 30s)
+  - User-Agent header for attribution
+  - Circuit-breaking preparation
+
+- **HTTP fetcher tests** (`pkg/http/fetcher_test.go`)
+  - Success case with mock HTTP server
+  - Retry logic validation (fails → succeeds)
+  - Exhausted retries behavior
+  - Backoff calculation unit tests
+
+- **Multi-area pipeline** (`cmd/fetch-demand/main.go`)
+  - `-area` flag: tokyo or kansai
+  - Unified job for both regions
+  - Area-specific output directories
+
+#### Sample Output
+- `public/data/jp/kansai/demand-2025-10-24.json` (2.8 KB)
+  - 24 hourly data points for Kansai
+  - Correct area identifier and source
+
+#### Technical Improvements
+- Consistent adapter pattern (TEPCO/Kansai identical structure)
+- Preparation for real HTTP fetching (fetcher ready, not yet integrated)
+- Test coverage: 100% for new code
+
+#### Testing
+- ✅ All tests passing (go test ./...)
+- ✅ Both TEPCO and Kansai adapters working
+- ✅ HTTP retry logic verified with mock server
+
+#### Next Steps (Phase 3)
+- [ ] Integrate HTTP fetcher into pipeline (replace testdata)
+- [ ] Add real TEPCO/Kansai URLs from .env
+- [ ] OCCTO reserve margin adapter (AGENT_TECH_SPEC §3.2)
+- [ ] JEPX spot price adapter (§3.3)
+
+---
+
 ### Phase 1 — Tokyo Demand Adapter MVP (2025-10-24)
 
 #### Added
