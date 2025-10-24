@@ -1,0 +1,31 @@
+.
+├── backend
+├── chat-summary.md
+├── CLAUDE.md
+├── corporate-energy-benchmark.md
+├── data
+├── docs
+├── frontend
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── src
+│   │   ├── App.vue
+│   │   ├── assets
+│   │   ├── components
+│   │   ├── composables
+│   │   ├── main.ts
+│   │   ├── router
+│   │   ├── services
+│   │   ├── stores
+│   │   ├── types
+│   │   └── views
+│   ├── tailwind.config.js
+│   ├── tsconfig.json
+│   └── vite.config.ts
+├── PROGRESS.md
+├── project-structure.txt
+└── README.md
+
+14 directories, 15 files
