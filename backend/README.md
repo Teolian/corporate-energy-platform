@@ -43,9 +43,18 @@ backend/
 - ✅ Sample output: `/public/data/jp/tokyo/demand-2025-10-24.json`
 - ✅ JSON Schema validation: `/pipeline/schemas/demand-schema.json`
 
+## Phase 2 Status — Kansai Adapter & HTTP Fetching ✅
+
+**Implemented:**
+- ✅ Kansai CSV adapter (same pattern as TEPCO)
+- ✅ Unit tests with golden test data
+- ✅ Multi-area pipeline job (tokyo/kansai support)
+- ✅ Sample output: `/public/data/jp/kansai/demand-2025-10-24.json`
+- ✅ HTTP fetcher with exponential backoff retry
+- ✅ Fetcher tests (retry logic, backoff calculation)
+
 **Not yet implemented:**
-- ❌ Real HTTP fetch from TEPCO website (using testdata for now)
-- ❌ Kansai adapter
+- ❌ Real HTTP fetch integration (fetcher ready, not yet used)
 - ❌ Reserve, JEPX, Weather adapters
 - ❌ API server endpoints
 
@@ -63,14 +72,28 @@ cd backend
 go test ./...
 ```
 
-### Generate Tokyo Demand JSON
+### Generate Demand JSON
 
+**Tokyo:**
 ```bash
 cd backend
-go run cmd/fetch-demand/main.go -date 2025-10-24
+go run cmd/fetch-demand/main.go -area tokyo -date 2025-10-24
 ```
-
 Output: `../public/data/jp/tokyo/demand-2025-10-24.json`
+
+**Kansai:**
+```bash
+cd backend
+go run cmd/fetch-demand/main.go -area kansai -date 2025-10-24
+```
+Output: `../public/data/jp/kansai/demand-2025-10-24.json`
+
+**Both areas:**
+```bash
+cd backend
+go run cmd/fetch-demand/main.go -area tokyo -date 2025-10-24
+go run cmd/fetch-demand/main.go -area kansai -date 2025-10-24
+```
 
 ### Validate Output Against Schema
 
