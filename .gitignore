@@ -75,3 +75,9 @@ pip-delete-this-directory.txt
 
 # Docker
 docker-compose.override.yml
+
+# Claude Code
+.claude/
+
+# Playwright MCP
+.playwright-mcp/
