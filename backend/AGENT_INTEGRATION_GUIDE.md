@@ -1,13 +1,16 @@
 # AGENT_INTEGRATION_GUIDE.md
 
-> **Topology cross-reference:** If the repo uses a two-frontend layout (`apps/frontend-mock` and `apps/frontend-live`), apply this guide's data-client and flag instructions **to `apps/frontend-live`**, while `apps/frontend-mock` remains mock-only. See `AGENT_TOPOLOGY.md`.
-
-**Project:** Corporate Energy Platform — UI Integration & Safe Rollout  
-**Audience:** AI coding agent (Claude/Cursor) + maintainer  
+**Project:** Corporate Energy Platform — UI Integration & Safe Rollout
+**Audience:** AI coding agent (Claude/Cursor) + maintainer
 **Purpose:** Keep the **existing Vue3/TS demo** working while introducing **live data** with **zero-risk** switches.
 
-> Companion docs: see `AGENT_TECH_SPEC.md` (contracts) and `AGENT_BIZ_SPEC.md` (product logic).  
+> Companion docs: see `PROJECT_ROADMAP.md` (current plan), `AGENT_TECH_SPEC.md` (contracts), and `AGENT_BIZ_SPEC.md` (product logic).
 > The agent MUST follow this guide when touching the frontend or deployment pipeline.
+
+**Note:** This project uses a simple structure:
+- `frontend/` — old demo (stable, mock-only)
+- `frontend-japan/` — new dashboard (dual-mode: MOCK/LIVE)
+- Development branch: `feat/japan-dashboard`
 
 ---
 

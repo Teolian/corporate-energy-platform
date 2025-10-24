@@ -9,9 +9,17 @@ Backend services for the Corporate Energy Benchmark Platform. Implements data ad
 - **Mode B (Serverless API)** — Future: Runtime API endpoints with caching
 
 Following specifications:
-- [AGENT_TECH_SPEC.md](./AGENT_TECH_SPEC.md) — Technical contracts
+- [PROJECT_ROADMAP.md](./PROJECT_ROADMAP.md) — Current plan & priorities
+- [AGENT_TECH_SPEC.md](./AGENT_TECH_SPEC.md) — Technical contracts (canonical)
 - [AGENT_BIZ_SPEC.md](./AGENT_BIZ_SPEC.md) — Business logic
 - [AGENT_INTEGRATION_GUIDE.md](./AGENT_INTEGRATION_GUIDE.md) — Frontend integration
+
+## Development Branch
+
+Work happens in `feat/japan-dashboard` branch.
+Feature branches: create from `feat/japan-dashboard`, merge back via PR.
+
+**Repository:** https://github.com/Teolian/corporate-energy-platform
 
 ## Project Structure
 

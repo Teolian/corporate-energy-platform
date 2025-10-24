@@ -1,0 +1,30 @@
+Please use the single plan: /docs/PRODUCT_FRONTEND_ROADMAP.md.
+Do not diverge from API contracts in /docs/AGENT_TECH_SPEC.md §3 (canonical).
+
+Scope:
+- Keep the old demo as frontend-mock (MOCK only).
+- Treat the new simple frontend as frontend-live (LIVE + feature flags).
+- Backend Mode A first (static artefacts), then optional Mode B.
+
+P1 deliverables (DGP-aligned):
+- Backend: OCCTO reserve adapter → /public/data/jp/system/reserve-YYYY-MM-DD.json
+- Backend: JEPX spot prices adapter → /public/data/jp/jepx/spot-AREA-YYYY-MM-DD.json
+- Backend: Settlement-lite (kWh × ¥/kWh) with deterministic rounding
+- Frontend-live: ReserveBadge/Gauge, price overlay + /prices route, CostCard + CSV export
+
+Rules:
+- Implement a single data adapter layer in src/services/dataClient.ts; keep component props unchanged.
+- LIVE only in preview; main remains MOCK until validated.
+- Surface source.name + source.url; warnings are non-blocking.
+- Feature flags: VITE_FEAT_RESERVE, VITE_FEAT_JEPX, VITE_FEAT_SETTLEMENT, VITE_FEAT_COMPARISON.
+
+Acceptance (P1):
+- Dashboard shows demand + reserve badge + price overlay + cost card in LIVE.
+- Golden tests for adapters; JSON Schema validation in CI.
+- Partial/missing data handled gracefully; CSV/PNG export works.
+
+References:
+- /docs/AGENT_TECH_SPEC.md
+- /docs/JAPAN_DASHBOARD_SPRINT_PLAN.md
+- /docs/FRONTEND_PLAN_JAPAN_DASHBOARD.md
+- /docs/FRONTEND_GREENFIELD_ALIGNMENT.md

@@ -2,6 +2,25 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Project Branches
+
+**GitHub:** https://github.com/Teolian/corporate-energy-platform
+
+**Branches:**
+- `main` — Original demo (Vue 3 corporate energy benchmark, stable, **DON'T MODIFY**)
+- `feat/japan-dashboard` — Japanese Energy Dashboard (backend + frontend-japan)
+  - Main development branch
+  - Backend: Go adapters for TEPCO, Kansai, OCCTO, JEPX
+  - Frontend: Vue 3.5 dashboard with live data
+
+## Key Documentation
+
+- **Roadmap & Plan:** [backend/PROJECT_ROADMAP.md](backend/PROJECT_ROADMAP.md)
+- **API Contracts:** [backend/AGENT_TECH_SPEC.md](backend/AGENT_TECH_SPEC.md)
+- **Business Logic:** [backend/AGENT_BIZ_SPEC.md](backend/AGENT_BIZ_SPEC.md)
+
+---
+
 ## Project Overview
 
 Corporate Energy Benchmark Platform - a Vue 3 application for comparing corporate energy consumption and efficiency. Built as a portfolio project demonstrating enterprise-grade frontend development with energy industry domain knowledge.
