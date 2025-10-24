@@ -541,4 +541,3 @@ A: https://digitalgrid.jp/ — Study their DGP, Econohashi, RE Bridge, Battery A
 **Last Updated:** 2025-10-24
 **Current Phase:** P1 Planning
 **Branch:** feat/japan-dashboard
-**Contributors:** Teo + Claude Code
